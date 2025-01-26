@@ -31,6 +31,54 @@ db_schema:
       type: string
     server: full
     title: expenses
+  frameworks:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: Framework Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Tenant
+      target: tenants
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: Questions
+      target: questions
+      type: link_multiple
+    server: full
+    title: Frameworks
+  questions:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: Question Text
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Framework
+      target: frameworks
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: Answers
+      type: simpleObject
+    server: full
+    title: Questions
+  tenants:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: Tenant Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Domain
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: Provisioned Frameworks
+      type: simpleObject
+    - admin_ui: {order: 3, width: 200}
+      name: Created Data
+      type: date
+    server: full
+    title: Tenants
   users:
     client: none
     columns:
@@ -61,6 +109,10 @@ db_schema:
     - admin_ui: {width: 200}
       name: role
       type: string
+    - admin_ui: {order: 9, width: 200}
+      name: Tenant
+      target: tenants
+      type: link_single
     server: full
     title: Users
 dependencies: []
