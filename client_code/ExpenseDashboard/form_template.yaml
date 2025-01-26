@@ -22,7 +22,7 @@ components:
 - components:
   - layout_properties: {}
     name: rp
-    properties: {item_template: ExpenseDashboard.RowTemplate1, spacing_above: none, spacing_below: none}
+    properties: {background: 'theme:Dark Overlay 1', item_template: ExpenseDashboard.RowTemplate1, spacing_above: none, spacing_below: none}
     type: RepeatingPanel
   layout_properties:
     col_widths: {}
