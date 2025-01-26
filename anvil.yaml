@@ -1,0 +1,89 @@
+allow_embedding: false
+correct_dependency_ids: {}
+db_schema:
+  expenses:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: status
+      type: string
+    - admin_ui: {width: 200}
+      name: description
+      type: string
+    - admin_ui: {width: 200}
+      name: created
+      type: datetime
+    - admin_ui: {width: 200}
+      name: amount
+      type: number
+    - admin_ui: {width: 200}
+      name: merchant
+      type: string
+    - admin_ui: {width: 200}
+      name: attachment
+      type: media
+    - admin_ui: {width: 200}
+      name: submitted_by
+      target: users
+      type: link_single
+    - admin_ui: {width: 200}
+      name: reject_message
+      type: string
+    server: full
+    title: expenses
+  users:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: email
+      type: string
+    - admin_ui: {width: 200}
+      name: enabled
+      type: bool
+    - admin_ui: {width: 200}
+      name: last_login
+      type: datetime
+    - admin_ui: {width: 200}
+      name: password_hash
+      type: string
+    - admin_ui: {width: 200}
+      name: n_password_failures
+      type: number
+    - admin_ui: {width: 200}
+      name: confirmed_email
+      type: bool
+    - admin_ui: {width: 200}
+      name: signed_up
+      type: datetime
+    - admin_ui: {width: 200}
+      name: email_confirmation_key
+      type: string
+    - admin_ui: {width: 200}
+      name: role
+      type: string
+    server: full
+    title: Users
+dependencies: []
+name: Expense Approval App
+native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
+package_name: Rally_theme
+runtime_options:
+  client_version: '3'
+  server_spec: {base: python310-minimal}
+  server_version: python3-full
+  version: 2
+services:
+- client_config: {enable_v2: true}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {allow_signup: true, confirm_email: true, enable_automatically: true, use_email: true, use_google: true}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/google.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/email.yml
+startup: {module: Login, type: form}
+startup_form: null

@@ -1,0 +1,92 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'TWGWNU,WQWDYR'}
+    name: label_2
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: headline, spacing_above: small, spacing_below: small, text: Expense Summary, tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {grid_position: 'IXMGWB,QNAJEV'}
+    name: label_3
+    properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: input-prompt, spacing_above: small, spacing_below: small, text: 'Description:', tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''description'']', property: text}
+    layout_properties: {grid_position: 'IXMGWB,OEABLN'}
+    name: description_label
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {grid_position: 'HYNABL,GCEJLN'}
+    name: label_5
+    properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: input-prompt, spacing_above: small, spacing_below: small, text: 'Submitted by:', tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''submitted_by''][''email'']', property: text}
+    layout_properties: {grid_position: 'HYNABL,OUGHAC'}
+    name: user_label
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {grid_position: 'TGRVRY,XOFEVW'}
+    name: label_1
+    properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: input-prompt, spacing_above: small, spacing_below: small, text: 'Date created:', tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''created''].strftime(''%d/%m/%y'')', property: text}
+    layout_properties: {grid_position: 'TGRVRY,BRBGED'}
+    name: date_label
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {grid_position: 'HBFEXL,LSDPBY'}
+    name: label_4
+    properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: input-prompt, spacing_above: small, spacing_below: small, text: 'Amount:', tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'f"£{self.item[''amount'']}"', property: text}
+    layout_properties: {grid_position: 'HBFEXL,IJPPYZ'}
+    name: amount_label
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {grid_position: 'EUGMFO,SQFIKA'}
+    name: label_7
+    properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: input-prompt, spacing_above: small, spacing_below: small, text: 'Merchant:', tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''merchant'']', property: text}
+    layout_properties: {grid_position: 'EUGMFO,ANFERM'}
+    name: merchant_label
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {grid_position: 'RUTYRW,DIGYOB'}
+    name: label_8
+    properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: input-prompt, spacing_above: small, spacing_below: small, text: 'Rejection Reason:', tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''reject_message'']', property: text}
+    layout_properties: {grid_position: 'RUTYRW,MKNQWN'}
+    name: rejection_label
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {grid_position: 'GMKLXB,GWJKQX'}
+    name: label_6
+    properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: input-prompt, spacing_above: small, spacing_below: small, text: 'Receipt/Proof:', tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''attachment'']', property: enabled}
+    event_bindings: {click: download_button_click}
+    layout_properties: {grid_position: 'GMKLXB,JJGGVP'}
+    name: download_button
+    properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:download', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Download attachment, tooltip: '', underline: false, visible: true}
+    type: Button
+  - data_bindings:
+    - {code: 'self.item[''attachment'']', property: source}
+    - {code: 'self.item[''attachment'']', property: visible}
+    layout_properties: {grid_position: 'TCBLZN,GOSMBY'}
+    name: receipt_image
+    properties: {background: '', border: '', display_mode: shrink_to_fit, foreground: '', height: '200', horizontal_align: left, role: null, source: '', spacing_above: small, spacing_below: small, tooltip: '', vertical_align: top, visible: true}
+    type: Image
+  layout_properties: {grid_position: 'SFERGC,GKZLMD'}
+  name: column_panel_1
+  properties: {col_widths: '{"XOFEVW":10,"BRBGED":50,"QNAJEV":10,"OEABLN":50,"LSDPBY":10,"IJPPYZ":50,"GCEJLN":10,"OUGHAC":50,"GWJKQX":10,"JJGGVP":50,"SQFIKA":10,"ANFERM":50,"DIGYOB":10,"MKNQWN":50}'}
+  type: ColumnPanel
+container:
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+is_package: true

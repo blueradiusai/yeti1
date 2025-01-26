@@ -1,0 +1,52 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'JLJYIQ,NQVVHX'}
+    name: spacer_1
+    properties: {height: 22}
+    type: Spacer
+  - layout_properties: {grid_position: 'JPQUTS,WCYHSK'}
+    name: label_1
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: headline, spacing_above: none, spacing_below: small, text: Expense Request Dashboard, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {click: new_expense_click}
+    layout_properties: {grid_position: 'JPQUTS,IQXSGG'}
+    name: new_expense
+    properties: {align: right, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:plus-circle', icon_align: left, italic: false, role: outlined, spacing_above: small, spacing_below: medium, text: New Request, tooltip: '', underline: false, visible: true}
+    type: Button
+  layout_properties:
+    col_widths: {}
+    grid_position: YOZBQW,QWOVTW
+  name: column_panel_1_copy
+  properties: {col_widths: '{"WCYHSK":35,"IQXSGG":25}'}
+  type: ColumnPanel
+- components:
+  - layout_properties: {}
+    name: rp
+    properties: {item_template: ExpenseDashboard.RowTemplate1, spacing_above: none, spacing_below: none}
+    type: RepeatingPanel
+  layout_properties:
+    col_widths: {}
+    grid_position: ULZMAH,UCPCJQ
+  name: data_view
+  properties:
+    auto_header: true
+    background: ''
+    border: ''
+    columns:
+    - {$$hashKey: 'object:1334', data_key: status, expand: false, id: QWJODR, title: Status, width: 100}
+    - {$$hashKey: 'object:1335', data_key: description, expand: false, id: RBXODV, title: Description, width: ''}
+    - {$$hashKey: 'object:1336', data_key: created, expand: false, id: WVUYGG, title: Created, width: 93}
+    - {$$hashKey: 'object:1371', data_key: amount, expand: false, id: RXABXA, title: Amount, width: 82}
+    - {$$hashKey: 'object:77407', data_key: column_1, expand: false, id: AXFMLE, title: Actions, width: 240}
+    foreground: ''
+    role: null
+    rows_per_page: 10
+    show_page_controls: true
+    spacing_above: small
+    spacing_below: small
+    tooltip: ''
+    visible: true
+    wrap_on: never
+  type: DataGrid
+container: {type: ColumnPanel}
+is_package: true

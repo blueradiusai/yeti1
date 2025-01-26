@@ -1,0 +1,50 @@
+components:
+- data_bindings:
+  - {code: 'f"£{self.item[''amount'']}"', property: text}
+  layout_properties: {column: RXABXA}
+  name: amount_in_pounds
+  properties: {}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''created''].strftime(''%d/%m/%y'')', property: text}
+  layout_properties: {column: WVUYGG}
+  name: date_label
+  properties: {}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''status'']', property: text}
+  layout_properties: {column: QWJODR}
+  name: status_label
+  properties: {align: center, background: 'theme:Light Overlay 3', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: tag, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+  type: Label
+- components:
+  - event_bindings: {click: approve_click}
+    layout_properties: {}
+    name: approve
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: 'theme:Surface Variant', icon: '', icon_align: left, italic: false, role: filled, spacing_above: small, spacing_below: small, text: Approve, tooltip: '', underline: false, visible: false}
+    type: Button
+  - event_bindings: {click: reject_click}
+    layout_properties: {}
+    name: reject
+    properties: {align: center, background: '#D64D47', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: 'theme:Surface Variant', icon: '', icon_align: left, italic: false, role: filled, spacing_above: small, spacing_below: small, text: Reject, tooltip: '', underline: false, visible: false}
+    type: Button
+  - event_bindings: {click: reimburse_click}
+    layout_properties: {}
+    name: reimburse
+    properties: {align: center, background: '#78C0E0', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: 'theme:Surface Variant', icon: '', icon_align: left, italic: false, role: filled, spacing_above: small, spacing_below: small, text: Reimburse, tooltip: '', underline: false, visible: false}
+    type: Button
+  layout_properties: {column: AXFMLE}
+  name: btns_panel
+  properties: {}
+  type: FlowPanel
+- data_bindings:
+  - {code: 'self.item[''description'']', property: text}
+  event_bindings: {click: description_link_click}
+  layout_properties: {column: RBXODV}
+  name: description_link
+  properties: {}
+  type: Link
+container:
+  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
+  type: DataRowPanel
+is_package: true
