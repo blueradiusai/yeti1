@@ -1,50 +1,37 @@
 from ._anvil_designer import MainTemplate
 from anvil import *
-from .. import State
-from ..ExpenseDashboard import ExpenseDashboard
-from ..SummaryPlots import SummaryPlots
-from ..AssessmentForm import AssessmentForm  # Ensure this is imported
+import anvil.users
+from ..AssessmentForm import AssessmentForm  # Import AssessmentForm
+from .. import State  # Import global state if needed for user roles
 
 class Main(MainTemplate):
-  def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
-    self.init_components(**properties)
-    
-    # Initial load to Dashboard
-    self.switch_to_dashboard(None)
-    if State.user['role'] == 'admin':  # Assuming role logic if needed
-      self.separator_label_2.visible = True
-      self.summary_btn.visible = True
-      self.summary_btn.enabled = True
+    def __init__(self, **properties):
+        # Initialize the form and its properties
+        self.init_components(**properties)
 
-  def log_out_click(self, **event_args):
-    """Logs the user out and returns them to the login screen."""
-    anvil.users.logout()
-    open_form('Login')
+        # Load initial content (e.g., default dashboard or blank)
+        self.load_assessments_form()
 
-  def switch_to_dashboard(self, status):
-    """Switches to a given dashboard based on status."""
-    self.content_panel.clear()
-    self.content_panel.add_component(ExpenseDashboard(status=status))
-  
-  def pendingappr_btn_click(self, **event_args):
-    self.switch_to_dashboard('pending')
+        # Example: Handling admin roles to show/hide specific buttons
+        if State.user.get('role') == 'admin':  # Check if the user's role is admin
+            self.separator_label_2.visible = True
+            self.summary_btn.visible = True
+            self.summary_btn.enabled = True
+        else:
+            self.separator_label_2.visible = False
+            self.summary_btn.visible = False
+            self.summary_btn.enabled = False
 
-  def pendingreimb_btn_click(self, **event_args):
-    self.switch_to_dashboard('approved')
+    def log_out_click(self, **event_args):
+        """Logs out the user and redirects them to the login form."""
+        anvil.users.logout()
+        open_form('Login')  # Redirect to the Login form after logout
 
-  def pastexp_btn_click(self, **event_args):
-    self.switch_to_dashboard(q.not_("pending", "approved"))
+    def load_assessments_form(self):
+        """Loads the AssessmentForm as the default content."""
+        self.content_panel.clear()  # Clear any existing content
+        self.content_panel.add_component(AssessmentForm())  # Load the AssessmentForm
 
-  def allexp_btn_click(self, **event_args):
-    self.switch_to_dashboard(None)
-
-  def summary_btn_click(self, **event_args):
-    """Switches to SummaryPlots."""
-    self.content_panel.clear()
-    self.content_panel.add_component(SummaryPlots())
-
-  def assessments_btn_click(self, **event_args):
-    """Switches to the Assessment Form when the button is clicked."""
-    self.content_panel.clear()  # Clear existing content
-    self.content_panel.add_component(AssessmentForm())  # Add the AssessmentForm component
+    def assessments_btn_click(self, **event_args):
+        """Handles the click on the 'Assessments' button in the sidebar."""
+        self.load_assessments_form()  # Reload the AssessmentForm content
