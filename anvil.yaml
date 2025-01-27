@@ -150,7 +150,7 @@ db_schema:
       name: role
       type: string
     - admin_ui: {order: 9, width: 200}
-      name: Tenant
+      name: tenant
       target: tenants
       type: link_single
     server: full
