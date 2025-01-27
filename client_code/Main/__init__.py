@@ -1,35 +1,29 @@
 from ._anvil_designer import MainTemplate
 from anvil import *
-import plotly.graph_objects as go
-import anvil.google.auth, anvil.google.drive
-from anvil.google.drive import app_files
-import anvil.users
-import anvil.server
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
 from .. import State
 from ..ExpenseDashboard import ExpenseDashboard
 from ..SummaryPlots import SummaryPlots
-from ..AssessmentForm import AssessmentForm 
+from ..AssessmentForm import AssessmentForm  # Ensure this is imported
 
 class Main(MainTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
+    # Initial load to Dashboard
     self.switch_to_dashboard(None)
-    if State.user['role'] == 'admin':
+    if State.user['role'] == 'admin':  # Assuming role logic if needed
       self.separator_label_2.visible = True
       self.summary_btn.visible = True
       self.summary_btn.enabled = True
 
   def log_out_click(self, **event_args):
-    """This method is called when the button is clicked"""
+    """Logs the user out and returns them to the login screen."""
     anvil.users.logout()
     open_form('Login')
 
   def switch_to_dashboard(self, status):
+    """Switches to a given dashboard based on status."""
     self.content_panel.clear()
     self.content_panel.add_component(ExpenseDashboard(status=status))
   
@@ -46,34 +40,11 @@ class Main(MainTemplate):
     self.switch_to_dashboard(None)
 
   def summary_btn_click(self, **event_args):
-    """This method is called when the button is clicked"""
+    """Switches to SummaryPlots."""
     self.content_panel.clear()
     self.content_panel.add_component(SummaryPlots())
 
   def assessments_btn_click(self, **event_args):
-    """This method is called when the 'Assessments' button in the sidebar is clicked"""
-    self.content_panel.clear()  # Clear the content panel
-    self.content_panel.add_component(AssessmentForm())  # Add AssessmentForm to the content panel
-
-
-
-  
-
-
-
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    """Switches to the Assessment Form when the button is clicked."""
+    self.content_panel.clear()  # Clear existing content
+    self.content_panel.add_component(AssessmentForm())  # Add the AssessmentForm component

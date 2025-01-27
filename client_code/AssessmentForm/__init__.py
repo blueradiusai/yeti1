@@ -6,81 +6,76 @@ from anvil.tables import app_tables
 
 class AssessmentForm(AssessmentFormTemplate):
     def __init__(self, **properties):
-        # Initialize components and properties
         self.init_components(**properties)
-        
-        # Store responses and file uploaders for each question
-        self.responses = {}
-        
-        # Dynamically load questions and controls based on tenant
-        self.load_questions()
+        self.responses = {}  # Store responses for each question
+        self.load_questions()  # Load questions related to the tenant
 
     def load_questions(self):
         try:
-            # Call the server function to fetch questions and controls for the tenant
+            # Call server function to fetch questions based on tenant
             framework_questions = anvil.server.call('get_framework_questions_for_tenant')
 
             if framework_questions:
-                # Create the UI elements for each question
+                # Create UI components for each question
                 for row in framework_questions:
-                    # Create the outer container (using ColumnPanel for each question)
+                    # Outer container for each question
                     question_container = ColumnPanel()
                     question_container.style = {
                         "padding": "10px",
-                        "border": "1px solid #ddd",  # Add border for outline
-                        "border_radius": "8px",  # Rounded corners
+                        "border": "1px solid #ddd",
+                        "border_radius": "8px",
                         "margin_bottom": "20px",
-                        "background_color": "#f9f9f9"  # Light background
+                        "background_color": "#f9f9f9"
                     }
-                    
-                    # Create Label for question text
+
+                    # Label for the question
                     question_label = Label(text=row['question_text'])
                     question_label.style = {
                         "font_weight": "bold",
                         "font_size": "16px",
-                        "margin_bottom": "10px"  # Space between question and options
+                        "margin_bottom": "10px"
                     }
                     question_container.add_component(question_label)
-                    
-                    # Create a list of controls from the framework (this is your framework data)
-                    for control in row['controls']:  # 'controls' field contains control data
-                        control_label = Label(text=control['control_name'])  # Assuming control name
+
+                    # List of controls under the question (like CIS, ISO controls)
+                    for control in row['controls']:
+                        control_label = Label(text=control['control_name'])
                         control_label.style = {
                             "font_size": "14px",
-                            "margin_bottom": "5px"  # Space between controls
+                            "margin_bottom": "5px"
                         }
                         question_container.add_component(control_label)
 
-                    # Add the question container to the FlowPanel
+                    # Add question container to the form
                     self.flow_panel_1.add_component(question_container)
 
-                    # Create response options below the question container
+                    # Response options (Yes, Partially, No)
                     response_container = ColumnPanel()
                     response_container.style = {
                         "margin_top": "10px"
                     }
-                    
-                    # Create modern-style buttons for Yes, Partially, No
+
+                    # Buttons for responses
                     yes_button = Button(text="Yes", style="primary", width="100px")
                     partial_button = Button(text="Partially", style="secondary", width="100px")
                     no_button = Button(text="No", style="danger", width="100px")
-                    
-                    # Add buttons to the response container
+
+                    # Add buttons to response container
                     response_container.add_component(yes_button)
                     response_container.add_component(partial_button)
                     response_container.add_component(no_button)
 
-                    # Create a file loader for evidence upload
+                    # File uploader for evidence
                     evidence_loader = FileLoader()
                     evidence_loader.style = {
                         "margin_top": "10px"
                     }
                     response_container.add_component(evidence_loader)
 
-                    # Add response container to the FlowPanel
+                    # Add response container to the form
                     self.flow_panel_1.add_component(response_container)
 
-                    # Store components for later use
+                    # Store the response components for future use
                     self.responses[row['question_key']] = {
                         "yes_button": yes_button,
                         "partial_button": partial_button,

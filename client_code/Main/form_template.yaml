@@ -13,30 +13,10 @@ components:
     name: separator_label_1
     properties: {align: center, background: '', bold: true, border: '', font: '', font_size: 20, foreground: 'theme:Primary', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: none, text: • • • • •, tooltip: '', underline: false, visible: true}
     type: Label
-  - event_bindings: {click: allexp_btn_click}
-    layout_properties: {grid_position: 'DSXYJY,BEEDTH'}
-    name: allexp_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:home', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Dashboard, tooltip: '', underline: false, visible: true}
-    type: Button
-  - event_bindings: {click: pendingappr_btn_click}
-    layout_properties: {grid_position: 'KGQVYZ,JSXRHI'}
-    name: pendingappr_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:clipboard', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Compliance, tooltip: '', underline: false, visible: true}
-    type: Button
   - event_bindings: {click: assessments_btn_click}
     layout_properties: {grid_position: 'UTVKFI,OHCHDY'}
     name: assessments_btn
     properties: {icon: 'fa:area-chart', text: Assessments}
-    type: Button
-  - event_bindings: {click: pendingreimb_btn_click}
-    layout_properties: {grid_position: 'XJTLPN,KNDNGJ'}
-    name: pendingreimb_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:shield', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Risk Register, tooltip: '', underline: false, visible: true}
-    type: Button
-  - event_bindings: {click: pastexp_btn_click}
-    layout_properties: {grid_position: 'MTXKRC,YDJIJR'}
-    name: pastexp_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:gavel', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Policies, tooltip: '', underline: false, visible: true}
     type: Button
   - data_bindings: []
     layout_properties: {full_width_row: false, grid_position: 'HUMMWM,UJDAWM', slot: default}
