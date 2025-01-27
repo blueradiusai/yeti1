@@ -14,26 +14,35 @@ components:
     name: allexp_btn
     properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Dashboard, tooltip: '', underline: false, visible: true}
     type: Button
+  - event_bindings: {click: link_assessment_click}
+    layout_properties: {grid_position: 'AGXWPG,EERFEA'}
+    name: link_assessment
+    properties: {align: center, bold: true, text: ASSESSMENTS}
+    type: Link
   - event_bindings: {click: pendingappr_btn_click}
     layout_properties: {grid_position: 'KGQVYZ,JSXRHI'}
     name: pendingappr_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Pending approval, tooltip: '', underline: false, visible: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Compliance, tooltip: '', underline: false, visible: true}
     type: Button
   - event_bindings: {click: pendingreimb_btn_click}
     layout_properties: {grid_position: 'XJTLPN,KNDNGJ'}
     name: pendingreimb_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Pending reimbursement, tooltip: '', underline: false, visible: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Risk Register, tooltip: '', underline: false, visible: true}
     type: Button
   - event_bindings: {click: pastexp_btn_click}
     layout_properties: {grid_position: 'MTXKRC,YDJIJR'}
     name: pastexp_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Past expenses, tooltip: '', underline: false, visible: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Security Policies, tooltip: '', underline: false, visible: true}
     type: Button
   - data_bindings: []
     layout_properties: {full_width_row: false, grid_position: 'HUMMWM,UJDAWM', slot: default}
     name: separator_label_2
     properties: {align: center, background: '', bold: true, border: '', font: '', font_size: 20, foreground: 'theme:Primary', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: none, text: • • • • •, tooltip: '', underline: false, visible: false}
     type: Label
+  - layout_properties: {grid_position: 'AIIOVN,UKXQDE'}
+    name: spacer_1
+    properties: {height: 106.95989990234375}
+    type: Spacer
   - event_bindings: {click: summary_btn_click}
     layout_properties: {grid_position: 'UMKXSZ,WZFWMV'}
     name: summary_btn
