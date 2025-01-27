@@ -122,9 +122,10 @@ native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=E
 package_name: Rally_theme
 runtime_options:
   client_version: '3'
+  legacy_features: {__dict__: true, bootstrap3: true, class_names: true, root_container: true}
   server_spec: {base: python310-minimal}
   server_version: python3-full
-  version: 2
+  version: 3
 services:
 - client_config: {enable_v2: true}
   server_config: {}

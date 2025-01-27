@@ -11,6 +11,7 @@ from anvil.tables import app_tables
 from .. import State
 from ..ExpenseDashboard import ExpenseDashboard
 from ..SummaryPlots import SummaryPlots
+from ..AssessmentForm import AssessmentForm 
 
 class Main(MainTemplate):
   def __init__(self, **properties):
@@ -49,10 +50,18 @@ class Main(MainTemplate):
     self.content_panel.clear()
     self.content_panel.add_component(SummaryPlots())
 
-  def link_assessment_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    open_form('AssessmentForm')  # This opens the Assessment Form when the link is clicked
+  def assessments_btn_click(self, **event_args):
+    """This method is called when the 'Assessments' button in the sidebar is clicked"""
+    self.content_panel.clear()  # Clear the content panel
+    self.content_panel.add_component(AssessmentForm())  # Add AssessmentForm to the content panel
 
+
+
+  
+
+
+
+ 
   
 
 

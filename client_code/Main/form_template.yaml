@@ -9,14 +9,6 @@ components:
   properties: {col_widths: '{}'}
   type: ColumnPanel
 - components:
-  - layout_properties: {grid_position: 'IPKMME,VOUHPF'}
-    name: card_3
-    properties: {role: card}
-    type: ColumnPanel
-  - layout_properties: {grid_position: 'DONNON,GPOLEW'}
-    name: card_2
-    properties: {role: card}
-    type: ColumnPanel
   - layout_properties: {full_width_row: false, grid_position: 'YLIGND,DRYZQL'}
     name: separator_label_1
     properties: {align: center, background: '', bold: true, border: '', font: '', font_size: 20, foreground: 'theme:Primary', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: none, text: • • • • •, tooltip: '', underline: false, visible: true}
@@ -24,27 +16,27 @@ components:
   - event_bindings: {click: allexp_btn_click}
     layout_properties: {grid_position: 'DSXYJY,BEEDTH'}
     name: allexp_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Dashboard, tooltip: '', underline: false, visible: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:home', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Dashboard, tooltip: '', underline: false, visible: true}
     type: Button
-  - event_bindings: {click: link_assessment_click}
-    layout_properties: {grid_position: 'AGXWPG,EERFEA'}
-    name: link_assessment
-    properties: {align: center, bold: true, text: ASSESSMENTS}
-    type: Link
   - event_bindings: {click: pendingappr_btn_click}
     layout_properties: {grid_position: 'KGQVYZ,JSXRHI'}
     name: pendingappr_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Compliance, tooltip: '', underline: false, visible: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:clipboard', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Compliance, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: assessments_btn_click}
+    layout_properties: {grid_position: 'UTVKFI,OHCHDY'}
+    name: assessments_btn
+    properties: {icon: 'fa:area-chart', text: Assessments}
     type: Button
   - event_bindings: {click: pendingreimb_btn_click}
     layout_properties: {grid_position: 'XJTLPN,KNDNGJ'}
     name: pendingreimb_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Risk Register, tooltip: '', underline: false, visible: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:shield', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Risk Register, tooltip: '', underline: false, visible: true}
     type: Button
   - event_bindings: {click: pastexp_btn_click}
     layout_properties: {grid_position: 'MTXKRC,YDJIJR'}
     name: pastexp_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Security Policies, tooltip: '', underline: false, visible: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:gavel', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Policies, tooltip: '', underline: false, visible: true}
     type: Button
   - data_bindings: []
     layout_properties: {full_width_row: false, grid_position: 'HUMMWM,UJDAWM', slot: default}
@@ -58,7 +50,7 @@ components:
   - event_bindings: {click: summary_btn_click}
     layout_properties: {grid_position: 'UMKXSZ,WZFWMV'}
     name: summary_btn
-    properties: {align: center, background: '', bold: false, border: '', enabled: false, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Summary, tooltip: '', underline: false, visible: false}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Summary, tooltip: '', underline: false, visible: true}
     type: Button
   - event_bindings: {click: log_out_click}
     layout_properties: {grid_position: 'YCDFFN,TRRVWI'}
@@ -77,4 +69,9 @@ container:
   data_bindings: []
   properties: {background: 'theme:Surface', html: '@theme:standard-page.html', role: null}
   type: HtmlTemplate
+custom_component: false
+custom_component_container: true
 is_package: true
+layout_metadata: {title: Main Layout}
+properties: []
+slots: {}
