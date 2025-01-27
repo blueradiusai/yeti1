@@ -116,7 +116,8 @@ db_schema:
     server: full
     title: Users
 dependencies: []
-name: RADIUS360
+metadata: {title: Radius360}
+name: Radius360
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 package_name: Rally_theme
 runtime_options:

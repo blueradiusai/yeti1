@@ -34,4 +34,5 @@ components:
 container:
   properties: {col_widths: '{}'}
   type: ColumnPanel
+custom_component: false
 is_package: true
