@@ -1,6 +1,46 @@
 allow_embedding: false
 correct_dependency_ids: {}
 db_schema:
+  assessment_data:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: question_key
+      target: questions
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: answer
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: evidence
+      type: simpleObject
+    - admin_ui: {order: 3, width: 200}
+      name: submiited_by
+      target: users
+      type: link_single
+    - admin_ui: {order: 4, width: 200}
+      name: timestamp
+      type: datetime
+    server: full
+    title: Assessment Data
+  controls:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: question_id
+      target: questions
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: control_name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: control_type
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: options
+      type: string
+    server: full
+    title: Controls
   expenses:
     client: none
     columns:
@@ -35,47 +75,46 @@ db_schema:
     client: none
     columns:
     - admin_ui: {order: 0, width: 200}
-      name: Framework Name
+      name: framework_name
       type: string
     - admin_ui: {order: 1, width: 200}
-      name: Tenant
+      name: tenant
       target: tenants
       type: link_single
-    - admin_ui: {order: 2, width: 200}
-      name: Questions
-      target: questions
-      type: link_multiple
+    - admin_ui: {width: 200}
+      name: description
+      type: string
     server: full
     title: Frameworks
   questions:
     client: none
     columns:
     - admin_ui: {order: 0, width: 200}
-      name: Question Text
+      name: question_text
       type: string
     - admin_ui: {order: 1, width: 200}
-      name: Framework
+      name: framework
       target: frameworks
       type: link_single
     - admin_ui: {order: 2, width: 200}
-      name: Answers
-      type: simpleObject
+      name: answers
+      type: string
     server: full
     title: Questions
   tenants:
     client: none
     columns:
     - admin_ui: {order: 0, width: 200}
-      name: Tenant Name
+      name: tenant_name
       type: string
     - admin_ui: {order: 1, width: 200}
-      name: Domain
+      name: email_domain
       type: string
     - admin_ui: {order: 2, width: 200}
-      name: Provisioned Frameworks
+      name: provisioned_frameworks
       type: simpleObject
     - admin_ui: {order: 3, width: 200}
-      name: Created Data
+      name: created_date
       type: date
     server: full
     title: Tenants
