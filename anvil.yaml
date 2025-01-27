@@ -113,10 +113,10 @@ db_schema:
     - admin_ui: {order: 3, width: 200}
       name: created_date
       type: date
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: provisioned_frameworks
       target: frameworks
-      type: link_single
+      type: link_multiple
     server: full
     title: Tenants
   users:
