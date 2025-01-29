@@ -1,17 +1,19 @@
 from ._anvil_designer import MainTemplate
 from anvil import *
-from ..AssessmentForm import AssessmentForm
+import anvil.server
 
 class Main(MainTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
 
+    def assessments_btn_click(self, **event_args):
+        """Open the AssessmentForm when the button is clicked."""
+        self.content_panel.clear()
+        # Add the AssessmentForm to the content panel
+        from ..AssessmentForm import AssessmentForm  # Import the AssessmentForm
+        self.content_panel.add_component(AssessmentForm())
+
     def log_out_click(self, **event_args):
-        """Logs the user out and returns them to the login screen."""
+        """Log the user out and return to the Login form."""
         anvil.users.logout()
         open_form('Login')
-
-    def assessments_btn_click(self, **event_args):
-        """Switches to the Assessment Form when the button is clicked."""
-        self.content_panel.clear()  # Clear existing content
-        self.content_panel.add_component(AssessmentForm())  # Add the AssessmentForm component

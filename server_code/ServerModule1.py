@@ -2,56 +2,51 @@ import anvil.server
 from anvil import users
 from anvil.tables import app_tables
 
-# Link the current user to their tenant based on email domain
 @anvil.server.callable
 def link_user_to_tenant():
-    """This function links a user to their tenant based on their email domain."""
+    """Link the current user to their tenant based on their email domain."""
     user = users.get_user()  # Get the currently logged-in user
     if user:
-        # Extract the email domain
-        email_domain = user['email'].split('@')[1]
-        # Fetch the tenant from the Tenants table
-        tenant_row = app_tables.tenants.get(email_domain=email_domain)
+        email_domain = user['email'].split('@')[1]  # Extract the domain from the email
+        tenant_row = app_tables.tenants.get(email_domain=email_domain)  # Find the tenant
         if tenant_row:
-            # Store tenant and user in session
+            # Store the tenant and user in the session
             anvil.server.session['tenant'] = tenant_row
             anvil.server.session['user'] = user
             return True
     return False
 
-# Get the frameworks provisioned for the current tenant
 @anvil.server.callable
 def get_provisioned_frameworks():
-    """This function returns the list of provisioned frameworks for the current tenant."""
+    """Get the list of frameworks provisioned for the current tenant."""
     tenant = anvil.server.session.get('tenant')
     if tenant:
-        # Get the list of framework names from the tenant's provisioned frameworks
+        # Fetch the frameworks for the tenant
         provisioned_frameworks = tenant['provisioned_frameworks']
-        frameworks = [framework['framework_name'] for framework in provisioned_frameworks]
+        frameworks = [{
+            'framework_name': f['framework_name'],
+            'framework_description': f['description'],
+            'framework_image_url': f['image_url']
+        } for f in provisioned_frameworks]
         return frameworks
     return []
 
-# Get the questions for a specific framework
 @anvil.server.callable
-def get_framework_questions(framework_name):
-    """This function returns the list of questions for a specific framework."""
-    tenant = anvil.server.session.get('tenant')
-    if tenant:
-        # Get the framework row from the Frameworks table
-        framework_row = app_tables.frameworks.get(framework_name=framework_name)
-        if framework_row:
-            # Get the questions from the Frameworks table
-            questions = framework_row['questions_text']
-            return questions
-    return []
-
-# Save the answer for a specific question
-@anvil.server.callable
-def save_answer(question_id, answer):
-    """This function saves a user's answer for a given question."""
+def save_answer(question_id, answer, evidence_link=None):
+    """Save the user's answer for a specific question."""
     user = anvil.server.session.get('user')
     if user:
-        # Save the answer to a table (you may need to create a table to store these answers)
-        app_tables.answers.add_row(user=user, question_id=question_id, answer=answer)
+        # Save the answer to the database
+        app_tables.user_answers.add_row(
+            user=user,
+            question_id=question_id,
+            answer=answer,
+            evidence=evidence_link
+        )
         return "Answer saved"
     return "Error: User not found."
+
+@anvil.server.callable
+def save_file(file):
+    """Save an uploaded file and return its URL."""
+    return anvil.media.from_file(file).url

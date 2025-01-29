@@ -87,6 +87,9 @@ db_schema:
     - admin_ui: {order: 3, width: 200}
       name: questions_text
       type: string
+    - admin_ui: {order: 4, width: 200}
+      name: image_url
+      type: string
     server: full
     title: Frameworks
   questions:
@@ -99,9 +102,9 @@ db_schema:
       name: framework
       target: frameworks
       type: link_single
-    - admin_ui: {order: 2, width: 200}
-      name: answers
-      type: string
+    - admin_ui: {order: -1, width: 200}
+      name: question_id
+      type: number
     server: full
     title: Questions
   tenants:
@@ -122,6 +125,27 @@ db_schema:
       type: link_multiple
     server: full
     title: Tenants
+  useranswers:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: user
+      target: users
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: question_id
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: answer
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: timestamp
+      type: datetime
+    - admin_ui: {order: 4, width: 200}
+      name: evidence
+      type: media
+    server: full
+    title: UserAnswers
   users:
     client: none
     columns:
