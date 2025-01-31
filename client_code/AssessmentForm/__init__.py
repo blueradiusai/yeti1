@@ -11,10 +11,9 @@ class AssessmentForm(AssessmentFormTemplate):
         """Load and display the frameworks for the current tenant."""
         frameworks = anvil.server.call('get_provisioned_frameworks')
         if frameworks:
-            for framework in frameworks:
-                # Add a FrameworkCard for each framework
-                from ..FrameworkCard import FrameworkCard  # Import the FrameworkCard
-                framework_card = FrameworkCard(framework)
-                self.frameworks_panel.add_component(framework_card)
+            # Set the items property of the RepeatingPanel to the list of frameworks
+            self.frameworks_panel.items = frameworks
         else:
+            # If no frameworks are found, display a message
+            self.frameworks_panel.clear()
             self.frameworks_panel.add_component(Label(text="No frameworks found."))
