@@ -11,9 +11,12 @@ class AssessmentForm(AssessmentFormTemplate):
         """Load and display the frameworks for the current tenant."""
         frameworks = anvil.server.call('get_provisioned_frameworks')
         if frameworks:
-            # Set the items property of the RepeatingPanel to the list of frameworks
-            self.frameworks_panel.items = frameworks
+            self.frameworks_panel.items = frameworks  # Set the RepeatingPanel items
+            print(f"Loaded frameworks: {frameworks}")  # Log the frameworks for debugging
         else:
-            # If no frameworks are found, display a message
             self.frameworks_panel.clear()
             self.frameworks_panel.add_component(Label(text="No frameworks found."))
+
+    def framework_card_click(self, framework, **event_args):
+        """When a framework card is clicked, redirect to questions related to that framework."""
+        open_form('FrameworkQuestions', framework=framework)  # Open the new form passing the framework data

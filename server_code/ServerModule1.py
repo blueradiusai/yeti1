@@ -2,6 +2,7 @@ import anvil.server
 from anvil import users
 from anvil.tables import app_tables
 
+# Link the current user to their tenant based on their email domain
 @anvil.server.callable
 def link_user_to_tenant():
     """Link the current user to their tenant based on their email domain."""
@@ -16,21 +17,27 @@ def link_user_to_tenant():
             return True
     return False
 
+# Get the list of frameworks provisioned for the current tenant
 @anvil.server.callable
 def get_provisioned_frameworks():
     """Get the list of frameworks provisioned for the current tenant."""
     tenant = anvil.server.session.get('tenant')
     if tenant:
-        # Fetch the frameworks for the tenant
-        provisioned_frameworks = tenant['provisioned_frameworks']
-        frameworks = [{
+        # Fetch the frameworks for the current tenant from the 'frameworks' table
+        frameworks = app_tables.frameworks.search(tenant=tenant)
+        
+        # Format the frameworks data
+        formatted_frameworks = [{
             'framework_name': f['framework_name'],
-            'framework_description': f['description'],
-            'framework_image_url': f['image_url']
-        } for f in provisioned_frameworks]
-        return frameworks
+            'framework_description': f['description'],  # Use the 'description' column
+            'framework_image_url': f['image_url']  # Use the 'image_url' column
+        } for f in frameworks]
+        
+        print("Frameworks:", formatted_frameworks)  # Debugging: Print the frameworks
+        return formatted_frameworks
     return []
 
+# Save the user's answer for a specific question
 @anvil.server.callable
 def save_answer(question_id, answer, evidence_link=None):
     """Save the user's answer for a specific question."""
@@ -46,6 +53,7 @@ def save_answer(question_id, answer, evidence_link=None):
         return "Answer saved"
     return "Error: User not found."
 
+# Save an uploaded file and return its URL
 @anvil.server.callable
 def save_file(file):
     """Save an uploaded file and return its URL."""

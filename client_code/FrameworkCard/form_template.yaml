@@ -2,11 +2,11 @@ components:
 - components:
   - layout_properties: {grid_position: 'FHAXVE,CPKQXJ'}
     name: framework_name
-    properties: {foreground: 'theme:Tertiary'}
+    properties: {foreground: 'theme:Tertiary', icon: 'fa:address-book'}
     type: Label
   - layout_properties: {grid_position: 'IFUVKL,QHVRWT'}
     name: framework_description
-    properties: {foreground: '', visible: true}
+    properties: {background: '', foreground: 'theme:On Primary Container', icon: 'fa:address-book', role: body, visible: true}
     type: Label
   layout_properties: {grid_position: 'BONCSP,ADYVIB'}
   name: card_1
